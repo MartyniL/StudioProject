@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
-    public GameObject weaponRotation, Player, slider;
+    public GameObject weaponRotation, Player, model;
     public WeaponObject weapon;
     public Slider healthBar;
     public ParticleSystem smoke;
@@ -25,7 +25,6 @@ public class EnemyController : MonoBehaviour
         reload = source[1];
         StartCoroutine(weapon.cooldown(reload));
         EventManager.OnAttack += TakeMeleeDamage;
-        healthBar = slider.GetComponent<Slider>();
         health = maxHealth;
         healthBar.maxValue = maxHealth;
         healthBar.minValue = 0;
@@ -114,6 +113,16 @@ public class EnemyController : MonoBehaviour
     void AimAtPlayer()
     {
         weaponRotation.transform.LookAt(Player.transform.position);
+        float DistanceOnX = Player.transform.position.x - transform.position.x;
+
+        if (DistanceOnX < 0)
+        {
+            model.transform.eulerAngles = new Vector3(0.0f, -90.0f, 0.0f);
+        }
+        else if (DistanceOnX > 0)
+        {
+            model.transform.eulerAngles = new Vector3(0.0f, 90.0f, 0.0f);
+        }
         shoot();
     }
 

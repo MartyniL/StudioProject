@@ -30,7 +30,7 @@ public class MainMenu : MonoBehaviour
     public void StartGame()
     {
         SavePlayerPrefs();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(0);
     }
 
     private void Awake()
