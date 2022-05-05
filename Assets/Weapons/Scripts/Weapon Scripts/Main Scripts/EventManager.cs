@@ -10,6 +10,9 @@ public class EventManager : MonoBehaviour
     public delegate void OnEnemyAttack(float damage);
     public static event OnEnemyAttack OnAIAttack;
 
+    public delegate void OnPlayerDie();
+    public static event OnPlayerDie OnDeath;
+
     public static void triggerAttack(float damage)
     {
         OnAttack(damage);
@@ -17,5 +20,10 @@ public class EventManager : MonoBehaviour
     public static void TriggerEnemyAttack(float damage)
     {
         OnAIAttack(damage);
+    }
+
+    public static void TriggerDeath()
+    {
+        OnDeath();
     }
 }
