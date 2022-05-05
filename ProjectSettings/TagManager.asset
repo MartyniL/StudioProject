@@ -11,6 +11,7 @@ TagManager:
   - BananaHealthSmall
   - BananaHealthBig
   - Coin
+  - DeathPlane
   layers:
   - Default
   - TransparentFX
