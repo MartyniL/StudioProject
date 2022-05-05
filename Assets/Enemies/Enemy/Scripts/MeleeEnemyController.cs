@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MeleeEnemyController : MonoBehaviour
 {
-    public GameObject weaponRotation, Player, slider;
+    public GameObject weaponRotation, Player, Model;
     public Slider healthBar;
     public ParticleSystem smoke;
     public float Range, Vision, maxAttackCooldown, minAttackCooldown, maxHealth, damage;
@@ -24,7 +24,6 @@ public class MeleeEnemyController : MonoBehaviour
         reload = source[1];
         //StartCoroutine(weapon.cooldown(reload));
         EventManager.OnAttack += TakeMeleeDamage;
-        healthBar = slider.GetComponent<Slider>();
         health = maxHealth;
         healthBar.maxValue = maxHealth;
         healthBar.minValue = 0;
@@ -108,12 +107,12 @@ public class MeleeEnemyController : MonoBehaviour
 
         if(DistanceOnX < -2)
         {
-            transform.eulerAngles = new Vector3(0.0f, 180.0f, 0.0f);
+            Model.transform.eulerAngles = new Vector3(0.0f, -90.0f, 0.0f);
             body.AddForce(new Vector3(-1.0f, 0.0f, 0.0f), ForceMode.Impulse);
         }
         else if (DistanceOnX > 2)
         {
-            transform.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
+            Model.transform.eulerAngles = new Vector3(0.0f, 90.0f, 0.0f);
             body.AddForce(new Vector3(1.0f, 0.0f, 0.0f), ForceMode.Impulse);
         }
     }

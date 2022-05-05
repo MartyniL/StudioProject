@@ -6,14 +6,15 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
 
+    
+    public GameObject pauseMenu;
+    static public bool paused = false;
+
     public void GoToMenu()
     {
         SceneManager.LoadScene(1);
         Time.timeScale = 1;
     }
-    public GameObject pauseMenu;
-    static public bool paused = false;
-
     // Start is called before the first frame update
     void Start()
     {

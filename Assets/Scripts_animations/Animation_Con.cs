@@ -48,8 +48,19 @@ public class Animation_Con : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            animator.SetTrigger("Is_Jump");
+            animator.SetTrigger("is_Jump");
         }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            animator.SetTrigger("is_RopeSwing");
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            animator.SetTrigger("is_StopSwing");
+        }
+
 
         //walk animation bool
         if (!isWalk && walkPressed)
