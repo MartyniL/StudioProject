@@ -14,6 +14,7 @@ public class EnemyController : MonoBehaviour
     float health;
     public LayerMask playerLayer;
     bool canAttack = true;
+    bool dead;
     bool inPlayerHitbox;
     AudioSource gunshot, reload;
 
@@ -25,6 +26,8 @@ public class EnemyController : MonoBehaviour
         reload = source[1];
         StartCoroutine(weapon.cooldown(reload));
         EventManager.OnAttack += TakeMeleeDamage;
+        inPlayerHitbox = false;
+        dead = false;
         health = maxHealth;
         healthBar.maxValue = maxHealth;
         healthBar.minValue = 0;
@@ -38,11 +41,13 @@ public class EnemyController : MonoBehaviour
 
     void TakeMeleeDamage(float damage)
     {
-        health -= damage;
+        if (inPlayerHitbox)
+            health -= damage;
     }
 
     IEnumerator die()
     {
+        EventManager.TriggerKill();
         weaponObject.SetActive(false);
         gameObject.GetComponent<MeshRenderer>().enabled = false;
         smoke.Play();
@@ -68,7 +73,7 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Hitbox")
+        if(other.tag == "PlayerHitbox")
         {
             inPlayerHitbox = true;
         }
@@ -76,7 +81,7 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Hitbox")
+        if (other.tag == "PlayerHitbox")
         {
             inPlayerHitbox = false;
         }
@@ -84,7 +89,7 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(IsPlayerInSight())
+        if(IsPlayerInSight() && !dead)
         {
             AimAtPlayer();
         }
@@ -100,8 +105,9 @@ public class EnemyController : MonoBehaviour
         }
         healthBar.value = health;
 
-        if(health <= 0)
+        if(health <= 0 && !dead)
         {
+            dead = true;
             StartCoroutine(die());
         }
     }

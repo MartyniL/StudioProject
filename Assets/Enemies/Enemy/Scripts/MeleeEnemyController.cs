@@ -12,12 +12,14 @@ public class MeleeEnemyController : MonoBehaviour
     float health;
     public LayerMask playerLayer;
     bool canAttack = true;
+    bool dead;
     bool inPlayerHitbox;
     AudioSource gunshot, reload;
     public Rigidbody body;
 
     private void OnEnable()
     {
+        dead = false;
         AudioSource[] source = GetComponents<AudioSource>();
         //weaponObject = weapon.spawnPrefab(weaponRotation.transform);
         gunshot = source[0];
@@ -25,6 +27,7 @@ public class MeleeEnemyController : MonoBehaviour
         //StartCoroutine(weapon.cooldown(reload));
         EventManager.OnAttack += TakeMeleeDamage;
         health = maxHealth;
+        inPlayerHitbox = false;
         healthBar.maxValue = maxHealth;
         healthBar.minValue = 0;
         healthBar.value = health;
@@ -33,11 +36,15 @@ public class MeleeEnemyController : MonoBehaviour
 
     void TakeMeleeDamage(float damage)
     {
-        health -= damage;
+        if (inPlayerHitbox)
+        {
+            health -= damage;
+        }
     }
 
     IEnumerator die()
     {
+        EventManager.TriggerKill();
         //weaponObject.SetActive(false);
         gameObject.GetComponent<MeshRenderer>().enabled = false;
         smoke.Play();
@@ -63,7 +70,7 @@ public class MeleeEnemyController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Hitbox")
+        if (other.tag == "PlayerHitbox")
         {
             inPlayerHitbox = true;
         }
@@ -71,7 +78,7 @@ public class MeleeEnemyController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Hitbox")
+        if (other.tag == "PlayerHitbox")
         {
             inPlayerHitbox = false;
         }
@@ -79,7 +86,7 @@ public class MeleeEnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (IsPlayerInSight())
+        if (IsPlayerInSight() && !dead)
         {
             MoveTowardsPlayer();
             AimAtPlayer();
@@ -95,8 +102,9 @@ public class MeleeEnemyController : MonoBehaviour
         }
         healthBar.value = health;
 
-        if (health <= 0)
+        if (health <= 0 && !dead)
         {
+            dead = true;
             StartCoroutine(die());
         }
     }

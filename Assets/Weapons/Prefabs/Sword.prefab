@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 3782968360959203410}
   m_Layer: 0
   m_Name: Club_sword
-  m_TagString: Hitbox
+  m_TagString: PlayerHitbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

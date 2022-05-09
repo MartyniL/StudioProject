@@ -30,11 +30,12 @@ public class MainMenu : MonoBehaviour
     public void StartGame()
     {
         SavePlayerPrefs();
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     private void Awake()
     {
+        Time.timeScale = 1;
         masterVol.value = PlayerPrefs.GetFloat("master");
         musicVol.value = PlayerPrefs.GetFloat("music");
         sfxVol.value = PlayerPrefs.GetFloat("sfx");

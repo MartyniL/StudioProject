@@ -1,14 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Weapons : MonoBehaviour
 {
     public List<WeaponObject> weapons = new List<WeaponObject>();
-    public List<GameObject> weaponObjects = new List<GameObject>(7);
-    public List<Animator> animators = new List<Animator>(7);
+    public List<GameObject> weaponObjects = new List<GameObject>();
+    public List<Animator> animators = new List<Animator>();
+    public List<Sprite> sprites = new List<Sprite>();
     GrappleHook hook;
     public GameObject weaponPos, meleePos;
+    public Image UIImage;
     int selected;
     AudioSource Gunshot, reload;
     
@@ -20,8 +23,8 @@ public class Weapons : MonoBehaviour
         Gunshot = sources[0];
         reload = sources[1];
         selected = 0;
-        hook = GetComponent<GrappleHook>();
-        for (int i = 1; i < weapons.Count; i++)
+        //hook = GetComponent<GrappleHook>();
+        for (int i = 0; i < weapons.Count; i++)
         {
             switch(weapons[i].WeaponType)
             {
@@ -43,22 +46,22 @@ public class Weapons : MonoBehaviour
             }
         }
 
-        for (int i = 1; i < weaponObjects.Count; i++)
+        for (int i = 0; i < weaponObjects.Count; i++)
         {
             weaponObjects[i].SetActive(false);
         }
+        weaponObjects[selected].SetActive(true);
+        UIImage.sprite = sprites[0];
     }
 
     // Update is called once per frame
     void Update()
     {
         getSelected();
-        if (selected != 0)
-        {
-            weapons[selected].Update();
-        }
+        weapons[selected].Update();
+        
 
-        if(Input.GetMouseButtonDown(0) && selected != 0)
+        if(Input.GetMouseButtonDown(0))
         {
             switch(weapons[selected].WeaponType)
             {
@@ -117,44 +120,45 @@ public class Weapons : MonoBehaviour
         weaponObjects[selected].SetActive(false);
         selected = select;
         weaponObjects[selected].SetActive(true);
+        UIImage.sprite = sprites[selected];
     }
     void getSelected()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             changeSelection(0);
-            hook.setSelected(true);
+            //hook.setSelected(true);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             changeSelection(1);
-            hook.setSelected(false);
+            //hook.setSelected(false);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             changeSelection(2);
-            hook.setSelected(false);
+            //hook.setSelected(false);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             changeSelection(3);
-            hook.setSelected(false);
+            //hook.setSelected(false);
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha5))
+        /*else if (Input.GetKeyDown(KeyCode.Alpha5))
         {
             changeSelection(4);
-            hook.setSelected(false);
+            //hook.setSelected(false);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha6))
         {
             changeSelection(5);
-            hook.setSelected(false);
+            //hook.setSelected(false);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha7))
         {
             changeSelection(6);
-            hook.setSelected(false);
-        }
+            //hook.setSelected(false);
+        }*/
     }
 
     private void OnEnable()

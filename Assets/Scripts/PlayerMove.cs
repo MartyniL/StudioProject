@@ -23,7 +23,7 @@ public class PlayerMove : MonoBehaviour
     public float moveSpeed, jumpForce, timeInAir, maxJumpTime, initialJump, maxHealth;
     float health;
     public bool canJump = true, alive = true;
-    int coins;
+    public static int coins;
 
     void Start()
     {
@@ -42,6 +42,10 @@ public class PlayerMove : MonoBehaviour
         if (other.gameObject.tag == "DeathPlane")
         {
             EventManager.TriggerDeath();
+        }
+        if(other.gameObject.tag == "Win")
+        {
+            EventManager.TriggerWin();
         }
         if (other.gameObject.tag == "Coin")
         {
