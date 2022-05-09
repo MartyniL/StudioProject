@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -16,9 +17,12 @@ public class PlayerMove : MonoBehaviour
     public Vector3 cameraOffset;
     public Image healthBar;
 
+    public TextMeshProUGUI CoinCounter;
+
     //Public Variables
     public float moveSpeed, jumpForce, timeInAir, maxJumpTime, initialJump;
     public bool canJump = true, alive = true;
+    int coins;
 
     void Start()
     {
@@ -26,7 +30,8 @@ public class PlayerMove : MonoBehaviour
         cam = Camera.main;
         playerRB = GetComponent<Rigidbody>();
         playerTrans = GetComponent<Transform>();
-        
+        coins = 0;
+        CoinCounter.SetText(coins.ToString());
     }
 
     private void OnTriggerEnter(Collider other)
@@ -45,14 +50,14 @@ public class PlayerMove : MonoBehaviour
         }
         if (other.gameObject.tag == "DeathPlane")
         {
-
+            EventManager.TriggerDeath();
         }
         if (other.gameObject.tag == "Coin")
         {
             Destroy(other.gameObject);
             coinSFX.Play();
-
-    
+            coins++;
+            CoinCounter.SetText(coins.ToString());
         }
     }
 
