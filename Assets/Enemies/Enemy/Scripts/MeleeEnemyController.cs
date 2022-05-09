@@ -120,9 +120,11 @@ public class MeleeEnemyController : MonoBehaviour
     void AimAtPlayer()
     {
         weaponRotation.transform.LookAt(Player.transform.position);
-        if (IsPlayerInRange())
+        if (IsPlayerInRange() && canAttack)
         {
             EventManager.TriggerEnemyAttack(damage);
+            canAttack = false;
+            StartCoroutine(cooldown());
         }
     }
 

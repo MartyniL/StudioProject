@@ -31,6 +31,11 @@ public class EnemyController : MonoBehaviour
         healthBar.value = health;
     }
 
+    private void OnDisable()
+    {
+        EventManager.OnAttack -= TakeMeleeDamage;
+    }
+
     void TakeMeleeDamage(float damage)
     {
         health -= damage;
@@ -86,8 +91,9 @@ public class EnemyController : MonoBehaviour
 
         if(health < maxHealth)
         {
-            health += 10.0f * Time.deltaTime;
+            health += 2.0f * Time.deltaTime;
         }
+
         if(health > maxHealth)
         {
             health = maxHealth;

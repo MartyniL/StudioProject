@@ -119,10 +119,6 @@ public class Animation_Con : MonoBehaviour
         {
             animator.SetBool(isWalkrightHash, false);
         }
-        if (Input.GetButtonDown("j"))
-        {
-            character.GetComponent<Animator>().Play("Jump");
-        }
     }
 
 }

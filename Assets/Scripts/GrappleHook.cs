@@ -35,12 +35,12 @@ public class GrappleHook : MonoBehaviour
             {
                 if (!grappled)
                 {
-                    Debug.Log("Start Grapple");
+                    //Debug.Log("Start Grapple");
                     StartGrapple();
                 }
                 else
                 {
-                    Debug.Log("Stop Grapple");
+                    //Debug.Log("Stop Grapple");
                     EndGrapple();
                 }
             }
@@ -68,7 +68,7 @@ public class GrappleHook : MonoBehaviour
     {
         if (!GetTarget())
         {
-            Debug.Log("No Overall Target");
+            //Debug.Log("No Overall Target");
             return;
         }
         joint = gameObject.AddComponent<SpringJoint>();
@@ -112,7 +112,7 @@ public class GrappleHook : MonoBehaviour
 
         if (!hitTarget)
         {
-            Debug.Log("No Target");
+            //Debug.Log("No Target");
             return false;
         }
 

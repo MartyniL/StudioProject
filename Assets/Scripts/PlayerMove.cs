@@ -15,12 +15,13 @@ public class PlayerMove : MonoBehaviour
     public AudioSource coinSFX, healthSFX;
     public Transform playerCenter;
     public Vector3 cameraOffset;
-    public Image healthBar;
+    //public Image healthBar;
 
     public TextMeshProUGUI CoinCounter;
 
     //Public Variables
-    public float moveSpeed, jumpForce, timeInAir, maxJumpTime, initialJump;
+    public float moveSpeed, jumpForce, timeInAir, maxJumpTime, initialJump, maxHealth;
+    float health;
     public bool canJump = true, alive = true;
     int coins;
 
@@ -28,6 +29,7 @@ public class PlayerMove : MonoBehaviour
     {
         //Assigning some variables
         cam = Camera.main;
+        canJump = true;
         playerRB = GetComponent<Rigidbody>();
         playerTrans = GetComponent<Transform>();
         coins = 0;
@@ -36,18 +38,7 @@ public class PlayerMove : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "BananaHealthSmall")
-        {
-            healthSFX.Play();
-            Destroy(other.gameObject);
-            healthBar.fillAmount += 0.25f;
-            
-        }
-        if (other.gameObject.tag == "BananaHealthBig")
-        {
-            Destroy(other.gameObject);
-            healthBar.fillAmount += 0.40f;
-        }
+        
         if (other.gameObject.tag == "DeathPlane")
         {
             EventManager.TriggerDeath();
@@ -69,7 +60,20 @@ public class PlayerMove : MonoBehaviour
         //Camera offset
         //cam.transform.position = playerCenter.position + cameraOffset;
 
-
+        RaycastHit hit;
+        //SphereCast below the player to check for ground
+        Debug.DrawRay(playerCenter.position, Vector3.down * 0.15f, Color.blue);
+        Debug.DrawRay(playerCenter.position + (Vector3.down * 0.15f), Vector3.down * (playerTrans.localScale.x / 2), Color.red);
+        if (Physics.SphereCast(playerCenter.position, playerTrans.localScale.x / 2, Vector3.down, out hit, 0.15f) && Input.GetAxis("Jump") == 0)
+        {
+            Debug.Log("I am hitting");
+            if (hit.collider.tag != "Pickups")
+            {
+                canJump = true;
+                timeInAir = 0f;
+                playerRB.velocity = new Vector3(0, playerRB.velocity.y, 0);
+            }
+        }
 
         //Jump Script
         if (Input.GetButton("Jump") && canJump == true && GetComponent<Grapple>().isGrappling == false)
@@ -120,18 +124,7 @@ public class PlayerMove : MonoBehaviour
 
     private void LateUpdate()
     {
-        RaycastHit hit;
-        //SphereCast below the player to check for ground
-        if (Physics.SphereCast(playerCenter.position, playerTrans.localScale.x / 2, Vector3.down, out hit, 0.15f) && Input.GetAxis("Jump") == 0)
-        {
-            Debug.Log("I am hitting");
-            if (hit.collider.tag != "Pickups")
-            {
-                canJump = true;
-                timeInAir = 0f;
-                playerRB.velocity = new Vector3(0, playerRB.velocity.y, 0);
-            }
-        }
+        
     }
 
     //Other input in fixed update
