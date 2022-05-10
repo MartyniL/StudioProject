@@ -16,6 +16,7 @@ public class MeleeEnemyController : MonoBehaviour
     bool inPlayerHitbox;
     AudioSource gunshot, reload;
     public Rigidbody body;
+    public Animator anim;
 
     private void OnEnable()
     {
@@ -116,12 +117,12 @@ public class MeleeEnemyController : MonoBehaviour
         if(DistanceOnX < -2)
         {
             Model.transform.eulerAngles = new Vector3(0.0f, -90.0f, 0.0f);
-            body.AddForce(new Vector3(-1.0f, 0.0f, 0.0f), ForceMode.Impulse);
+            body.AddForce(new Vector3(-0.5f, 0.0f, 0.0f), ForceMode.Impulse);
         }
         else if (DistanceOnX > 2)
         {
             Model.transform.eulerAngles = new Vector3(0.0f, 90.0f, 0.0f);
-            body.AddForce(new Vector3(1.0f, 0.0f, 0.0f), ForceMode.Impulse);
+            body.AddForce(new Vector3(0.5f, -0.0f, 0.0f), ForceMode.Impulse);
         }
     }
 
@@ -130,6 +131,7 @@ public class MeleeEnemyController : MonoBehaviour
         weaponRotation.transform.LookAt(Player.transform.position);
         if (IsPlayerInRange() && canAttack)
         {
+            anim.SetTrigger("IsAttack");
             EventManager.TriggerEnemyAttack(damage);
             canAttack = false;
             StartCoroutine(cooldown());

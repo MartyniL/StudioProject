@@ -38,9 +38,9 @@ public class Animation_Con : MonoBehaviour
 
         //call bool
         bool isWalk = animator.GetBool(isWalkHash);
-        bool walkPressed = Input.GetKey("a");
+        bool walkPressed = Input.GetKey("a") || Input.GetKey("d");
         bool isWalkback = animator.GetBool(isWalkbackHash);
-        bool walkbackPressed = Input.GetKey("d");
+        //bool walkbackPressed = Input.GetKey("d");
         bool isWalkleft = animator.GetBool(isWalkleftHash);
         bool walkleftpressed = Input.GetKey("w");
         bool isWalkright = animator.GetBool(isWalkrightHash);
@@ -51,12 +51,12 @@ public class Animation_Con : MonoBehaviour
             animator.SetTrigger("is_Jump");
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1))
         {
             animator.SetTrigger("is_RopeSwing");
         }
 
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(1))
         {
             animator.SetTrigger("is_StopSwing");
         }
@@ -73,14 +73,14 @@ public class Animation_Con : MonoBehaviour
         }
 
         //walk backward animation bool
-        if (!isWalkback && walkbackPressed)
+        /*if (!isWalkback && walkbackPressed)
         {
             animator.SetBool(isWalkbackHash, true);
         }
         if (isWalkback && !walkbackPressed)
         {
             animator.SetBool(isWalkbackHash, false);
-        }
+        }*/
 
         //walk fwd left
         if (!isWalkleft && (isWalk && walkleftpressed))

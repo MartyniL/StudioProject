@@ -12,7 +12,7 @@ public class PlayerMove : MonoBehaviour
     public Transform playerTrans, modelTrans;
 
     //Public Objects
-    public AudioSource coinSFX, healthSFX;
+    public AudioSource coinSFX, healthSFX, bgMusic;
     public Transform playerCenter;
     public Vector3 cameraOffset;
     //public Image healthBar;
@@ -27,6 +27,11 @@ public class PlayerMove : MonoBehaviour
 
     void Start()
     {
+        AudioListener.volume = PlayerPrefs.GetFloat("master");
+        coinSFX.volume = PlayerPrefs.GetFloat("sfx");
+        healthSFX.volume = PlayerPrefs.GetFloat("sfx");
+        bgMusic.volume = PlayerPrefs.GetFloat("music");
+
         //Assigning some variables
         cam = Camera.main;
         canJump = true;

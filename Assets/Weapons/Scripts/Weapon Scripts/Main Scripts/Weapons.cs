@@ -22,6 +22,9 @@ public class Weapons : MonoBehaviour
         AudioSource[] sources = GetComponents<AudioSource>();
         Gunshot = sources[0];
         reload = sources[1];
+
+        Gunshot.volume = PlayerPrefs.GetFloat("sfx");
+        reload.volume = PlayerPrefs.GetFloat("sfx");
         selected = 0;
         //hook = GetComponent<GrappleHook>();
         for (int i = 0; i < weapons.Count; i++)
@@ -60,6 +63,11 @@ public class Weapons : MonoBehaviour
         getSelected();
         weapons[selected].Update();
         
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            animators[selected].SetTrigger("Reload");
+            StartCoroutine(weapons[selected].cooldown(reload));
+        }
 
         if(Input.GetMouseButtonDown(0))
         {

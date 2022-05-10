@@ -255,7 +255,7 @@ MonoBehaviour:
   healthBar: {fileID: 851537450520727528}
   smoke: {fileID: 9127146635665079430}
   Range: 20
-  maxAttackCooldown: 4
+  maxAttackCooldown: 6
   minAttackCooldown: 2
   maxHealth: 100
   playerLayer:
