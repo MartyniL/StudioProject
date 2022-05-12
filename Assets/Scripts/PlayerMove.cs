@@ -8,7 +8,7 @@ public class PlayerMove : MonoBehaviour
 {
     //Private variables
     private Camera cam;
-    private Rigidbody playerRB;
+    public Rigidbody playerRB;
     public Transform playerTrans, modelTrans;
 
     //Public Objects
@@ -63,7 +63,10 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
-
+        if(playerRB == null)
+        {
+            playerRB = GetComponent<Rigidbody>();
+        }
         PlayerRotation();
 
         //Camera offset

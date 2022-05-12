@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponType: 0
   bulletDamage: 10
-  bullets: 10
+  bullets: 100
   reloadTime: 2
   spawnDist: 0.75
   loaded: 1
   reloading: 0
-  ammo: 5
+  ammo: -257
   maxSpread: 1
   WeaponPrefab: {fileID: 7019048296491818427, guid: 8f42cd4d5040a514f869e0bc6b610cc2,
     type: 3}

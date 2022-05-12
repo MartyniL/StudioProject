@@ -61,6 +61,11 @@ public class Animation_Con : MonoBehaviour
             animator.SetTrigger("is_StopSwing");
         }
 
+        if (Input.GetMouseButtonDown(0))
+        {
+            animator.SetTrigger("is_Attacking");
+        }
+
 
         //walk animation bool
         if (!isWalk && walkPressed)
