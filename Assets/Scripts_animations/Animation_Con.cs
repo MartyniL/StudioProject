@@ -29,6 +29,25 @@ public class Animation_Con : MonoBehaviour
 
     }
 
+    private void OnEnable()
+    {
+        EventManager.OnAttack += Attack;
+    }
+    private void OnDisable()
+    {
+        EventManager.OnAttack -= Attack;
+    }
+
+    public void land()
+    {
+        animator.SetTrigger("is_Land");
+    }
+
+    public void Attack(float damange)
+    {
+        animator.SetTrigger("is_Attack");
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -60,6 +79,7 @@ public class Animation_Con : MonoBehaviour
         {
             animator.SetTrigger("is_StopSwing");
         }
+        
 
 
         //walk animation bool

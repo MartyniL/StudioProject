@@ -25,6 +25,7 @@ public class PlayerMove : MonoBehaviour
     public bool canJump = true, alive = true;
     public static int coins;
 
+
     void Start()
     {
         AudioListener.volume = PlayerPrefs.GetFloat("master");

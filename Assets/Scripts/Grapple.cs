@@ -40,24 +40,25 @@ public class Grapple : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(player.position, gunTip.up, out hit, maxDistance, whatIsGrappleable))
         {
-                isGrappling = true;
-                grapplePoint = hit.point;
+            //Debug.Log(hit.transform.gameObject.name);
+            isGrappling = true;
+            grapplePoint = hit.point;
 
-                joint = player.gameObject.AddComponent<SpringJoint>();
-                joint.autoConfigureConnectedAnchor = false;
-                joint.connectedAnchor = grapplePoint;
+            joint = player.gameObject.AddComponent<SpringJoint>();
+            joint.autoConfigureConnectedAnchor = false;
+            joint.connectedAnchor = grapplePoint;
 
-                float distanceFromPoint = Vector3.Distance(player.position, grapplePoint);
+            float distanceFromPoint = Vector3.Distance(player.position, grapplePoint);
 
-                // The distance grapple will try to keep from grapple point
-                joint.maxDistance = distanceFromPoint * 0.011f;
-                joint.minDistance = 0;
+            // The distance grapple will try to keep from grapple point
+            joint.maxDistance = distanceFromPoint * 0.011f;
+            joint.minDistance = 0;
 
-                joint.spring = hotUpdateSpring;
-                joint.damper = hotUpdateDampen;
-                joint.massScale = 4.5f;
+            joint.spring = hotUpdateSpring;
+            joint.damper = hotUpdateDampen;
+            joint.massScale = 4.5f;
 
-                lr.positionCount = 2;
+            lr.positionCount = 2;
         }
   }
 

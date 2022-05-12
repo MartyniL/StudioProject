@@ -129,6 +129,13 @@ public class Weapons : MonoBehaviour
         selected = select;
         weaponObjects[selected].SetActive(true);
         UIImage.sprite = sprites[selected];
+
+        if(weapons[selected].ammo <= 0)
+        {
+            weapons[selected].reloading = false;
+            //weapons[selected].loaded = true;
+            StartCoroutine(weapons[selected].cooldown(reload));
+        }
     }
     void getSelected()
     {

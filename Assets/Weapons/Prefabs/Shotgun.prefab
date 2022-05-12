@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8297950978544537629}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: GunTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 6130753214061092448}
   - component: {fileID: 3106477076356579770}
   - component: {fileID: 4827069075845261485}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: polySurface3_polySurfaceShape6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,6 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -110,7 +109,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &2549227067021458906
 GameObject:
   m_ObjectHideFlags: 0
@@ -122,7 +120,7 @@ GameObject:
   - component: {fileID: 5891276825124812154}
   - component: {fileID: 2324283205395044536}
   - component: {fileID: 7962555646876306032}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: polySurface3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -166,7 +164,6 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -191,7 +188,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &6473544297995423388
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,7 +198,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5953044647687590950}
   - component: {fileID: 6150687436691352150}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Shotgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}

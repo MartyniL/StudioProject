@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2835083065971334289}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GunTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3389463759697273505}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DrawPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 460125562152356570}
   - component: {fileID: 6951560497646313172}
   - component: {fileID: 4302200401047646383}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8432200511451722892}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: StringBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5492913832315559146}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: StringTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 3024946206506815915}
   - component: {fileID: 242973834401054180}
   - component: {fileID: 1021847519599958991}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,7 +292,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 44332b9aa235a8d4cb2f114d39f8b0ba, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

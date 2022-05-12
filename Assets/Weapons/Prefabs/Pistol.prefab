@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3177420394190559144}
   - component: {fileID: 458626853986653365}
   - component: {fileID: 8950586695972376551}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Vody_Slider_group1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,6 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -80,7 +79,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &2251006234630163090
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,7 +90,7 @@ GameObject:
   - component: {fileID: 9084516235637882422}
   - component: {fileID: 339150096774586906}
   - component: {fileID: 3879295094529812608}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Vody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +134,6 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -161,7 +158,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &3970508726855431487
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,7 +167,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6401089519261005526}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: GunTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +198,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7648092451399583489}
   - component: {fileID: 6313254435829255911}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Pistol
   m_TagString: Untagged
   m_Icon: {fileID: 0}

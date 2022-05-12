@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5501984949474830991}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 9102009645333085222}
   - component: {fileID: 4347695611203717762}
   - component: {fileID: 3782968360959203410}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Club_sword
   m_TagString: PlayerHitbox
   m_Icon: {fileID: 0}
